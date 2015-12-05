@@ -1,0 +1,16 @@
+<template>
+    <require from="resources/wijmo/wj-input-date"></require>
+    <div class="container" style="margin-top: 500px;">
+        <!--An example of binding to a property of the view-model.--->
+        <wj-input-date selected-date.two-way="selectedDate"></wj-input-date>
+        <button click.delegate="showDate()">Show Selected Date</button>
+    </div>
+    
+    <div class="container" style="margin-top: 500px;">
+        <!--An example of binding to an entity--->
+        <wj-input-date selected-date.two-way="myContact.birthday"></wj-input-date>
+        <button click.delegate="showDate()">Show Selected Date</button>
+    </div>
+    
+    
+</template>
