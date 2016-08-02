@@ -8,27 +8,27 @@ export class WjInputDate {
     element: HTMLElement;
     inputDate: wijmo.input.InputDate;
     @bindable selectedDate: Date;
-    
+
     @bindable disabled: boolean;
 
     constructor(element: HTMLElement) {
         this.element = element;
     }
-    
-    selectedDateChanged(newValue: Date, oldValue: Date) {
-        this.inputDate? this.inputDate.value = newValue: null;
-        
-    }        
 
-    disabledChanged(newValue, oldValue) {
-        this.inputDate ?  this.inputDate.disabled = newValue: null;
+    selectedDateChanged(newValue: Date, oldValue: Date) {
+        if (this.inputDate) this.inputDate.value = newValue;
+    }
+
+    disabledChanged(newValue: any, oldValue: any) {
+        if (this.inputDate) this.inputDate.disabled = newValue;
     }
 
     attached() {
         this.inputDate = new wijmo.input.InputDate(this.element);
-        this.inputDate.value = this.selectedDate;
         this.inputDate.disabled = this.disabled;
         this.inputDate.required = false;
+        this.inputDate.value = this.selectedDate;
+
         this.inputDate.valueChanged.addHandler(() => {
             this.selectedDate = this.inputDate.value;
         });
